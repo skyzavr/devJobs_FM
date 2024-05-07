@@ -1,0 +1,18 @@
+:root[color-scheme='dark'] {
+  --bgr: #121721;
+  --primary: #19202d;
+  --blue: #5964e0;
+  --color--one: #6e8098;
+  --color--two: #ffffff;
+  --gray: #e8e8ea;
+  --additional: #efeefc;
+}
+:root[color-scheme='light'] {
+  --bgr: #f5f6f8;
+  --primary: #ffffff;
+  --blue: #5964e0;
+  --color--one: #939395;
+  --color--two: #122033;
+  --gray: #e8e8ea;
+  --additional: #efeefc;
+}
