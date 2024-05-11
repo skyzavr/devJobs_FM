@@ -1,0 +1,20 @@
+.wrapper {
+  background-image: url('/assets/headers/bg-header.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.title {
+  font-weight: 800;
+  font-size: 30px;
+  color: #fff;
+}
+.title:hover {
+  cursor: pointer;
+}
