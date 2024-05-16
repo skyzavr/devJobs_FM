@@ -1,10 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
-import { cardInfo } from '@shared/types/card';
-
+import { job } from '@shared/types/card';
 import cn from './jobCard.module.css';
 
-export const JobCard = ({ data }: cardInfo) => {
+export const JobCard = ({ el }: { el: job }) => {
   const {
     id,
     logo,
@@ -14,7 +13,7 @@ export const JobCard = ({ data }: cardInfo) => {
     postedAt,
     contract,
     location,
-  } = data;
+  } = el;
 
   const navigate = useNavigate();
 
