@@ -1,0 +1,28 @@
+.btn {
+  min-width: 120px;
+  min-height: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: border-color 0.2s ease-in;
+}
+.btn:hover {
+  cursor: pointer;
+  transition: border-color 0.2s ease-in;
+}
+.primary {
+  background-color: var(--blue);
+  color: var(--additional);
+  border: 2px solid var(--blue);
+}
+.primary:hover {
+  border: 2px solid var(--color--two);
+}
+.accent {
+  background-color: var(--additional);
+  color: var(--blue);
+  border: 2px solid var(--additional);
+}
+.accent:hover {
+  border: 2px solid var(--blue);
+}
