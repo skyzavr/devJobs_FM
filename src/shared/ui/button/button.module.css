@@ -1,5 +1,6 @@
 .btn {
   min-width: 120px;
+  width: 150px;
   min-height: 50px;
   font-size: 18px;
   font-weight: 500;
@@ -12,7 +13,7 @@
 }
 .primary {
   background-color: var(--blue);
-  color: var(--additional);
+  color: #fff;
   border: 2px solid var(--blue);
 }
 .primary:hover {
