@@ -1,34 +1,21 @@
-import { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { RootState, AppDispatch } from '@store/store';
-import { fetchJobsList } from '../model/jobsSlice';
-
 import { JobCard } from '@widgets/JobCard';
-import { Loading } from '@widgets/Loading';
 import { Error } from '@widgets/Error';
+import { JobCardSkeleton } from '@widgets/jobCardSkeleton';
+
+import { useJobFetch } from '@features/Jobs/lib/useJobFetch';
 
 import cn from './jobSection.module.css';
 
 export const JobSection = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const { entities, error, loading, errorMsg } = useJobFetch(3000);
 
-  const { entities, error, loading, errorMsg } = useSelector(
-    (state: RootState) => state.jobs
-  );
-
-  const initTimeout = useCallback(
-    () => setTimeout(() => dispatch(fetchJobsList()), 3000),
-    [dispatch]
-  );
-
-  useEffect(() => {
-    initTimeout();
-  }, [initTimeout]);
-
+  const skeletonArr = Array(9).fill(null);
+  const skeletonSection = skeletonArr.map((_, ind) => (
+    <JobCardSkeleton key={ind} />
+  ));
   return (
     <section className={cn.wrapper}>
-      {loading && <Loading />}
+      {loading && skeletonSection}
       {error && <Error msg={errorMsg} />}
       {entities.map((el) => (
         <JobCard {...{ el }} key={el.id} />
