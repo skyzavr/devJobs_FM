@@ -1,0 +1,96 @@
+.wrapper {
+  max-width: 350px;
+  width: auto;
+}
+.image {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 25px;
+  left: 50px;
+  background-color: var(--color--one);
+}
+/* infoCard container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: var(--primary);
+  padding: 40px 30px;
+  border-radius: 8px;
+}
+.positionInfo > div,
+.container > div {
+  border-radius: 3px;
+}
+.container > div:not(.container > div:last-child) {
+  margin-bottom: 16px;
+}
+.container > div:last-child {
+  margin-top: 30px;
+}
+/* infoCard container ends */
+.positionInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.positionInfo > div:first-child {
+  margin-right: 20px;
+  width: 50px;
+}
+.positionInfo > div:last-child {
+  width: 70px;
+}
+.positionTitle {
+  background-color: var(--color--two);
+  width: 240px;
+  height: 15px;
+}
+.companyName {
+  width: 50px;
+}
+.positionInfo > div,
+.companyName {
+  background-color: var(--color--one);
+  height: 15px;
+}
+.positionLocation {
+  background-color: var(--blue);
+  width: 160px;
+  height: 15px;
+}
+/* animation */
+@keyframes reflect {
+  to {
+    left: calc(100% + 100px);
+  }
+}
+.positionLocation,
+.companyName,
+.positionTitle,
+.image,
+.positionInfo > div {
+  overflow: hidden;
+  position: relative;
+}
+.positionLocation::after,
+.companyName::after,
+.positionTitle::after,
+.image::after,
+.positionInfo > div ::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100px;
+  left: -100px;
+  top: 0;
+
+  background: linear-gradient(to right, transparent, var(--gray), transparent);
+  animation: reflect 2s ease-out infinite;
+}
