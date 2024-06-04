@@ -1,17 +1,21 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { AppDispatch, RootState } from '@app/store/store';
+import { RootState } from '@app/store/store';
+import { CheckBox } from '@shared/ui/checkBox/CheckBox';
 
-import { setFullTimeJob } from '../model/FullTimeJobSlice';
-import { CheckBox } from '@shared/ui/checkBox/CHeckBox';
+type props = { liftDataUp: (data: boolean) => void };
 
-export const FullTime = () => {
-  const checked = useSelector((state: RootState) => state.fullTimeJob);
-  const dispatch = useDispatch<AppDispatch>();
+export const FullTime = ({ liftDataUp }: props) => {
+  const checked = useSelector((state: RootState) => state.filters.fullTime);
+  const [isChecked, setIsChecked] = useState<boolean>(checked);
 
-  const onUpdate = () => dispatch(setFullTimeJob());
+  const onUpdate = () => {
+    setIsChecked((prev) => !prev);
+    liftDataUp(!isChecked);
+  };
 
   return (
-    <CheckBox title="Full time only" checked={checked} onUpdate={onUpdate} />
+    <CheckBox title="Full time only" checked={isChecked} onUpdate={onUpdate} />
   );
 };
