@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { job } from '@shared/types/card';
+
 import cn from './jobCard.module.css';
 
 export const JobCard = ({ el }: { el: job }) => {
@@ -20,11 +21,11 @@ export const JobCard = ({ el }: { el: job }) => {
   const navigateHandler = () => navigate(`/${id}`, { state: { id } });
 
   return (
-    <article className={cn.wrapper} onClick={navigateHandler}>
+    <article className={cn.wrapper}>
       <div className={cn.image} style={{ backgroundColor: logoBackground }}>
         <img src={logo} alt={company} />
       </div>
-      <div className={cn.container}>
+      <div className={cn.container} onClick={navigateHandler}>
         <div className={cn.positionInfo}>
           <div>{postedAt}</div>
           <div>{contract}</div>
