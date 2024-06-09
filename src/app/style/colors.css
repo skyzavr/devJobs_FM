@@ -6,6 +6,7 @@
   --color--two: #ffffff;
   --gray: #e8e8ea;
   --additional: #efeefc;
+  --shadow: rgba(1, 1, 1, 1);
 }
 :root[color-scheme='light'] {
   --bgr: #f5f6f8;
@@ -15,4 +16,5 @@
   --color--two: #122033;
   --gray: #e8e8ea;
   --additional: #efeefc;
+  --shadow: rgba(0, 0, 0, 0.25);
 }
