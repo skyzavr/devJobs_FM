@@ -1,7 +1,9 @@
+import { ReactElement } from 'react';
+
 import cn from './button.module.css';
 
 type Props = {
-  children: string;
+  children: ReactElement | string;
   onClickHandler: () => void;
   type?: 'accent' | 'primary';
 };
