@@ -6,3 +6,15 @@
   justify-content: center;
   margin: 0 auto;
 }
+.resultData {
+  color: var(--color--two);
+  text-align: center;
+  margin: 20px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.resultData > button {
+  margin-top: 20px;
+}
