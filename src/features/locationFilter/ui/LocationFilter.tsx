@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@app/store/store';
 
@@ -17,6 +17,9 @@ export const LocationFilter = ({ liftDataUp }: props) => {
     setLoc(value);
     liftDataUp(value);
   };
+  useEffect(() => {
+    setLoc(LocValue);
+  }, [LocValue]);
 
   return (
     <Search

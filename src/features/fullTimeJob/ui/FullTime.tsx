@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '@app/store/store';
@@ -14,6 +14,10 @@ export const FullTime = ({ liftDataUp }: props) => {
     setIsChecked((prev) => !prev);
     liftDataUp(!isChecked);
   };
+
+  useEffect(() => {
+    setIsChecked(checked);
+  }, [checked]);
 
   return (
     <CheckBox title="Full time only" checked={isChecked} onUpdate={onUpdate} />

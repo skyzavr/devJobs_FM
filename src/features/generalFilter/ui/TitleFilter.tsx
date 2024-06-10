@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@app/store/store';
 
@@ -17,7 +17,9 @@ export const TitleFilter = ({ liftDataUp }: props) => {
     setTitle(value);
     liftDataUp(value);
   };
-
+  useEffect(() => {
+    setTitle(titleValue);
+  }, [titleValue]);
   return (
     <Search
       placeholder="Filter by title"
