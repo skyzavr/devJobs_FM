@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState, AppDispatch } from '@app/store/store';
@@ -6,6 +7,7 @@ import { JobCard } from '@widgets/JobCard';
 import { Error } from '@widgets/Error';
 import { JobCardSkeleton } from '@widgets/jobCardSkeleton';
 import { clearFilters } from '@widgets/Filter/model/filterSlice';
+import { setInitPage, setTotal } from '@widgets/pagination/model/pageSlice';
 import { useJobFetch } from '@features/Jobs/lib/useJobFetch';
 import { Button } from '@shared/ui/button/Button';
 
@@ -17,6 +19,9 @@ export const JobSection = () => {
   const { title, location, fullTime, filtersApplied } = useSelector(
     (state: RootState) => state.filters
   );
+  const { page, pageSize } = useSelector(
+    (state: RootState) => state.pagination
+  );
 
   const jobList = entities.filter((el) => {
     const isIncludesLocation = el.location.toLowerCase().includes(location);
@@ -24,12 +29,22 @@ export const JobSection = () => {
     const isFillTimeJob = el.contract.includes(fullTime ? 'Full Time' : '');
     if (isIncludesLocation && isIncludesTitle && isFillTimeJob) return el;
   });
+  const jobListSlice = jobList.slice(
+    Math.max((page - 1) * pageSize, 0),
+    page * pageSize
+  );
 
   const skeletonSection = Array(9)
     .fill(null)
     .map((_, ind) => <JobCardSkeleton key={ind} />);
-  const clearFiltersHandler = () => dispatch(clearFilters());
 
+  const clearFiltersHandler = () => {
+    dispatch(clearFilters());
+    dispatch(setInitPage());
+  };
+  useEffect(() => {
+    dispatch(setTotal({ totalPages: jobList.length, page, pageSize }));
+  }, [jobList]);
   return (
     <>
       {!loading && !error && (
@@ -49,7 +64,7 @@ export const JobSection = () => {
       <section className={cn.wrapper}>
         {loading && skeletonSection}
         {error && <Error msg={errorMsg} />}
-        {jobList.map((el) => (
+        {jobListSlice.map((el) => (
           <JobCard {...{ el }} key={el.id} />
         ))}
       </section>
