@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch, RootState } from '@app/store/store';
 
+import { setInitPage } from '@widgets/pagination/model/pageSlice';
 import { FullTime } from '@features/fullTimeJob';
 import { TitleFilter } from '@features/generalFilter';
 import { LocationFilter } from '@features/locationFilter';
@@ -26,7 +27,10 @@ export const Filter = () => {
   const [showModal, setShowModal] = useState(false);
 
   const data = useSelector((state: RootState) => state.jobs.entities);
-  const searchHandler = () => dispatch(setNewFilter({ ...filters }));
+  const searchHandler = () => {
+    dispatch(setInitPage());
+    dispatch(setNewFilter({ ...filters }));
+  };
 
   const onUpdateTitle = (title: string) =>
     setFilters((fil) => ({ ...fil, title }));
@@ -41,6 +45,7 @@ export const Filter = () => {
 
   const onUpdateFilters = () => {
     searchHandler();
+
     onHandleModal();
   };
 
