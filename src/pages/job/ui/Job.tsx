@@ -8,6 +8,7 @@ import { Loading } from '@widgets/Loading';
 import { job } from '@shared/types/card';
 
 import { useJobFetch } from '@features/Jobs/lib/useJobFetch';
+import { useEffect } from 'react';
 
 type LocationState = {
   pathname: string;
@@ -19,6 +20,10 @@ export const Job = () => {
   const { pathname }: LocationState = useLocation();
   const id = Number(pathname.slice(pathname.indexOf('/') + 1));
   const job = entities.filter((el: job) => Number(el.id) === id)[0];
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   if (loading) return <Loading />;
   if (error) return <Error msg={errorMsg} />;
