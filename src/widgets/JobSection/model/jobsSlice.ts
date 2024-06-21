@@ -12,7 +12,7 @@ export const fetchJobsList = createAsyncThunk(
   'jobsList/load',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('/src/mock/data.json');
+      const response = await fetch('/assets/mock/data.json');
       if (!response.ok) {
         throw new Error('Ough, sorry! Our fault');
       }
