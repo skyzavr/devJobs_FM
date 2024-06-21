@@ -3,7 +3,7 @@
 # Links
 
 <a href="https://github.com/skyzavr/devJobs_FM"> Repo </a> |
-<a href="dev-jobs-fm.vercel.app"> Live </a>  | 
+<a href="https://dev-jobs-fm.vercel.app"> Live </a>  | 
 <a href="https://www.frontendmentor.io/challenges/devjobs-web-app-HuvC_LP4l"> Original project</a> 
 
 
