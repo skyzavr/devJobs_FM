@@ -13,7 +13,7 @@ import { Modal } from '@shared/ui/modalWindow/Modal';
 import { useWidth } from '@shared/hooks/useWidth';
 import { setNewFilter } from '../model/filterSlice';
 
-import filter from '/public/assets/icons/icon-filter.svg';
+import filter from '/assets/icons/icon-filter.svg';
 
 import cn from './filter.module.css';
 
@@ -45,7 +45,6 @@ export const Filter = () => {
 
   const onUpdateFilters = () => {
     searchHandler();
-
     onHandleModal();
   };
 

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@app/store/store';
 
 import { Search } from '@shared/ui/searchField/Search';
-import search from '/public/assets/icons/icon-search.svg';
+import search from '/assets/icons/icon-search.svg';
 
 type props = { liftDataUp: (data: string) => void };
 
